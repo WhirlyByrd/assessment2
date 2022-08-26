@@ -26,7 +26,7 @@ const greetUser = (username) => {
     console.log(`Welcome back ${username}`)
 }
 
-greetUser('Andrew')
+console.log(greetUser('Andrew'))
 
 
 
@@ -57,13 +57,13 @@ const deliveryAreaZipCodes = [85205, 85204, 85203, 85213, 85206]
 //CODE HERE
 const canWeDeliver = (zipCode) => {
     if (deliveryAreaZipCodes.includes(zipCode) === false){
-        console.log(`Sorry, we ca't deliver to that address.`)
+        console.log(`Sorry, we can't deliver to that address.`)
     } else {
         console.log(`You're in our delivery zone!`)
     }
     
 }
-canWeDeliver(85205)
+console.log(canWeDeliver(85205))
 
 
 /* 
@@ -85,18 +85,18 @@ canWeDeliver(85205)
 
 // CODE HERE
 const canWeDeliver2 = (zipCode) => {
-    for(i = 0; i <= deliveryAreaZipCodes.length; i++){
-        if (zipCode != deliveryAreaZipCodes[i]){
-            
-            console.log(`Sorry, we ca't deliver to that address.`)
-            return false
-        } else {
-            console.log(`You're in our delivery zone!`)
+    for(let i = 0; i < deliveryAreaZipCodes.length; i++){
+        if(deliveryAreaZipCodes[i] === zipCode){
+            return "You are eligible for delivery"
         }
-        
     }
+
+    return "Sorry, we can't deliver to that address"
 }
-canWeDeliver2(85309)
+
+console.log(canWeDeliver2(85203))
+console.log(canWeDeliver2(55555))
+canWeDeliver2(85204)
 
 
 //////////////////PROBLEM 3////////////////////
@@ -133,7 +133,10 @@ const deals = [
 */
 
 //CODE HERE
-let deal = deals.replace((title[0]), '10') // how to locate spot in the object?array?
+
+
+deals[0].title = deals[0].title.replace('15%','10%')
+console.log(deals[0].title) // how to locate spot in the object in an array
 //console.log(deal)
 
 
@@ -151,4 +154,6 @@ let deal = deals.replace((title[0]), '10') // how to locate spot in the object?a
 */
 
 //CODE HERE
-let deal2 = deals.replace((desc[1]), 'This deal lasts until the end of April!')
+
+deals[1].desc = deals[1].desc.trim().replace('March', 'April')
+console.log(deals[1].desc)

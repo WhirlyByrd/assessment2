@@ -70,8 +70,8 @@ console.log(pizza.tags[1])
 */
 
 //CODE HERE
-pizza.price = 12.99
-console.log(pizza.price)
+let {price} = pizza
+
 
 /*
     Fourth, and last, destructure the category
@@ -81,8 +81,8 @@ console.log(pizza.price)
 */
 
 //CODE HERE
-let pizzaCategory = pizza.category
-console.log(pizzaCategory)
+let {category} = pizza
+console.log(category)
 
 //////////////////PROBLEM 3////////////////////
 /* 
@@ -98,7 +98,7 @@ console.log(pizzaCategory)
 
 //CODE HERE
 const foodArr = [
-    Spaghetti = {
+    {
     name: 'pepperoni',
     price: 14.99,
     category: 'entree',
@@ -106,7 +106,7 @@ const foodArr = [
     rating: 5,
     tags: ['thin crust', 'gluten-free']},
 
-    Fettuccini = {
+    {
     name: 'fettuccini',
     price: 12.99,
     category: 'entree',
@@ -114,21 +114,21 @@ const foodArr = [
     rating: 3.5,
     tags: ['chicken']},
 
-    Lasagna = {name: 'lasagna',
+    {name: 'lasagna',
     price: 17.99,
     category: 'entree',
     pupularity: 4.5,
     rating: 5,
     tags: ['vegetarian', '5-cheese']},
 
-    Ravioli= {name: 'Ravioli',
+    {name: 'Ravioli',
     price: 18.99,
     category: 'entree',
     pupularity: 4,
     rating: 4,
     tags: ['gluten-free', 'italian sausage']},
 
-    Linguini ={name: 'Linguini',
+    {name: 'Linguini',
     price: 16.99,
     category: 'entree',
     pupularity: 4,
@@ -151,7 +151,13 @@ const foodArr = [
 
 //CODE HERE
 
-const filteredFood = foodArr.filter(/* CALLBACK HERE */)
+const filteredFood = foodArr.filter((food) => {
+    if(food.tags.includes('shrimp')){
+        return food
+    }
+})
+
+console.log(filteredFood)
 
 
 
@@ -195,6 +201,17 @@ const filteredFood = foodArr.filter(/* CALLBACK HERE */)
 */
 
 //CODE HERE
+const filterByProperty = (property, number, type) => {
+    const filteredFood = foodArr.filter((food) => {
+        if(type === 'above'){
+            return food[property] >= number
+        } else{
+            return food[property] <= number
+        }
+    })
+
+    return filteredFood
+}
 
 
 /*
@@ -205,3 +222,5 @@ const filteredFood = foodArr.filter(/* CALLBACK HERE */)
 */
 
 //CODE HERE
+
+console.log(filterByProperty('popularity', 3, 'below'))
